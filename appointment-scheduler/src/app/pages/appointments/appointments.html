@@ -1,1 +1,43 @@
-<p>appointments works!</p>
+<mat-card>
+    <form [formGroup]="appointmentForm" (ngSubmit)="save()">
+      <mat-form-field appearance="fill">
+        <mat-label>Client Name</mat-label>
+        <input matInput formControlName="clientName" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Service</mat-label>
+        <input matInput formControlName="service" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput type="date" formControlName="date" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Time</mat-label>
+        <input matInput type="time" formControlName="time" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Save Appointment</button>
+    </form>
+  </mat-card>
+  
+  <mat-card class="mt-4" *ngFor="let appt of appointments$ | async">
+    <mat-card-title>{{ appt.clientName }} — {{ appt.service }}</mat-card-title>
+    <mat-card-content>
+        <p>{{ appt.date }} &#64; {{ appt.time }}</p>
+
+      <p>{{ appt.notes }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="warn" (click)="delete(appt.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  
