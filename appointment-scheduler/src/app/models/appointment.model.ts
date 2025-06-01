@@ -5,10 +5,10 @@ export interface Appointment {
   date: string;
   time: string;
   notes?: string;
-  userId: string; // links appointment to the client
+  userId: string;
 }
-export interface User {
-  id: string;
-  username: string;
-  role: 'admin' | 'client';
-}
+
+
+
+
+

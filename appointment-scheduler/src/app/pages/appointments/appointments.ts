@@ -9,6 +9,11 @@ import { Observable } from 'rxjs';
 
 import { AppointmentService } from '../../services/appointment.service';
 import { Appointment } from '../../models/appointment.model';
+import { AuthService } from '../../services/auth.service';
+
+
+
+
 
 @Component({
   selector: 'app-appointments',
@@ -31,8 +36,10 @@ export class AppointmentsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private appointmentService: AppointmentService
+    private appointmentService: AppointmentService,
+    private authService: AuthService
   ) {}
+  
 
   ngOnInit(): void {
     this.appointmentForm = this.fb.group({
@@ -54,7 +61,8 @@ export class AppointmentsComponent implements OnInit {
       service: formValue.service!,
       date: formValue.date!,
       time: formValue.time!,
-      notes: formValue.notes ?? ''
+      notes: formValue.notes ?? '',
+      userId: ''
     };
     this.appointmentService.addAppointment(appointment);
     this.appointmentForm.reset();
