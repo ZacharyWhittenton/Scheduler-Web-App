@@ -1,9 +1,12 @@
 <mat-card>
-    <h2>Login</h2>
+    <h2>Login or Register</h2>
+  
     <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
       <input matInput [(ngModel)]="username" />
     </mat-form-field>
+  
     <button mat-raised-button color="primary" (click)="login()">Login</button>
+    <button mat-button color="accent" (click)="register()">Register as Client</button>
   </mat-card>
   

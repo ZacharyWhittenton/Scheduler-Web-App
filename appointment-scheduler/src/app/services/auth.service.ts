@@ -53,4 +53,20 @@ export class AuthService {
       this.currentUserSubject.next(JSON.parse(savedUser));
     }
   }
+  registerClient(username: string): boolean {
+    const exists = this.mockUsers.some(u => u.username === username);
+    if (exists) return false;
+  
+    const newUser: User = {
+      id: crypto.randomUUID(),
+      username,
+      role: 'client'
+    };
+  
+    this.mockUsers.push(newUser);
+    this.currentUserSubject.next(newUser);
+    localStorage.setItem('user', JSON.stringify(newUser));
+    return true;
+  }
+  
 }

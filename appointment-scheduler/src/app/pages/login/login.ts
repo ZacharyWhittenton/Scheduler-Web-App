@@ -34,4 +34,19 @@ export class LoginComponent {
       alert('Invalid user');
     }
   }
+  register() {
+    if (!this.username) {
+      alert('Please enter a username to register.');
+      return;
+    }
+  
+    const success = this.authService.registerClient(this.username);
+    if (success) {
+      const role = this.authService.getCurrentUserValue()?.role;
+      this.router.navigate([role === 'admin' ? 'admin' : 'client']);
+    } else {
+      alert('Username already taken.');
+    }
+  }
+  
 }
