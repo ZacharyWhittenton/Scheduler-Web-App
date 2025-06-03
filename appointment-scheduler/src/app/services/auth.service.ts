@@ -68,5 +68,8 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(newUser));
     return true;
   }
+  getAllUsers(): User[] {
+    return this.mockUsers;
+  }
   
 }

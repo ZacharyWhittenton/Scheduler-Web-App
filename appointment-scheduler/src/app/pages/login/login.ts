@@ -48,5 +48,8 @@ export class LoginComponent {
       alert('Username already taken.');
     }
   }
-  
+  ngOnInit(): void {
+    console.log('Registered Users:', this.authService.getAllUsers());
+  }
+
 }
